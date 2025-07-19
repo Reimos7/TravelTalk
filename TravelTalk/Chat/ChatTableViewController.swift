@@ -103,6 +103,8 @@ extension ChatTableViewController: UITableViewDataSource {
             
             cell.configure(message: chatList?[indexPath.row].message, date: chatList?[indexPath.row].date.chatDate)
             
+            cell.selectionStyle = .none
+            
             return cell
             
         } else {
@@ -115,7 +117,9 @@ extension ChatTableViewController: UITableViewDataSource {
                 cell.otherMessagePersonImage.layer.cornerRadius = cell.otherMessagePersonImage.frame.width / 2
             }
             
-            cell.configure(image: personImage , name: personName, message: chatList?[indexPath.row].message, date: chatList?[indexPath.row].date.chatDate)
+            cell.configure(image: chatList?[indexPath.row].user.image , name: chatList?[indexPath.row].user.name, message: chatList?[indexPath.row].message, date: chatList?[indexPath.row].date.chatDate)
+            
+            cell.selectionStyle = .none
             
             return cell
         }

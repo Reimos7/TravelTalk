@@ -46,9 +46,9 @@ final class OtherMessageTableViewCell: UITableViewCell {
 
     }
     
-    func configure(image: UIImage?, name: String?, message: String?, date: String?) {
+    func configure(image: String?, name: String?, message: String?, date: String?) {
         
-        otherMessagePersonImage.image = image
+        otherMessagePersonImage.image = UIImage(named: image ?? "xmark")
         
         otherMessagePersonName.text = name
         
