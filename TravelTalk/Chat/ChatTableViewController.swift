@@ -57,6 +57,11 @@ final class ChatTableViewController: UIViewController {
 
         navigationItem.title = navigationTitle
         
+        
+        // 내가 보낸 메시지
+        configureXib(xibNibName: MyMessageTableViewCell.nibName, reuseIdentifier: MyMessageTableViewCell.identifier)
+        
+        // 상대방이 보낸 메시지
         configureXib(xibNibName: OtherMessageTableViewCell.nibName, reuseIdentifier: OtherMessageTableViewCell.identifier)
         
         tableView.dataSource = self
@@ -90,20 +95,32 @@ extension ChatTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //let row = indexPath.row
-    
-        let cell = tableView.dequeueReusableCell(withIdentifier: "OtherMessageTableViewCell", for: indexPath) as! OtherMessageTableViewCell
+        dump(chatList?[indexPath.row].user.name == "김새싹")
         
-        //let chat = chatList[indexPath.row]
-        // 이미지를 정원으로 그리기
-        DispatchQueue.main.async {
-            cell.otherMessagePersonImage.layer.cornerRadius = cell.otherMessagePersonImage.frame.width / 2
+        // 김새싹 (나) 이 보낸 채팅이라면? MyMessageTableViewCell
+        if chatList?[indexPath.row].user.name == "김새싹" {
+            let cell = tableView.dequeueReusableCell(withIdentifier: MyMessageTableViewCell.identifier, for: indexPath) as! MyMessageTableViewCell
+            
+            cell.configure(message: chatList?[indexPath.row].message, date: chatList?[indexPath.row].date.chatDate)
+            
+            return cell
+            
+        } else {
+            // 상대방이라면 OtherMessageTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: OtherMessageTableViewCell.identifier, for: indexPath) as! OtherMessageTableViewCell
+            
+            //let chat = chatList[indexPath.row]
+            // 이미지를 정원으로 그리기
+            DispatchQueue.main.async {
+                cell.otherMessagePersonImage.layer.cornerRadius = cell.otherMessagePersonImage.frame.width / 2
+            }
+            
+            cell.configure(image: personImage , name: personName, message: chatList?[indexPath.row].message, date: chatList?[indexPath.row].date.chatDate)
+            
+            return cell
         }
-        
-        cell.configure(image: personImage , name: personName, message: chatList?[indexPath.row].message, date: chatList?[indexPath.row].date.chatDate)
-        
-        return cell
-    }
     
+    }
     
 }
 

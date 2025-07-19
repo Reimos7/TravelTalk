@@ -18,16 +18,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zmm-TM-uhb">
-                        <rect key="frame" x="0.0" y="0.0" width="404" height="115"/>
+                        <rect key="frame" x="110" y="2" width="284" height="111"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d34-Tn-342">
-                                <rect key="frame" x="100" y="10" width="294" height="95"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iul-Dk-KR6">
-                                <rect key="frame" x="10" y="80" width="80" height="25"/>
+                                <rect key="frame" x="10" y="10" width="264" height="91"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -35,22 +29,30 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="d34-Tn-342" firstAttribute="top" secondItem="zmm-TM-uhb" secondAttribute="top" constant="10" id="DS2-z6-kOY"/>
-                            <constraint firstAttribute="bottom" secondItem="d34-Tn-342" secondAttribute="bottom" constant="10" id="H0k-Rv-3Yj"/>
-                            <constraint firstItem="d34-Tn-342" firstAttribute="leading" secondItem="zmm-TM-uhb" secondAttribute="leading" constant="100" id="Hwf-1N-A7J"/>
-                            <constraint firstItem="iul-Dk-KR6" firstAttribute="trailing" secondItem="d34-Tn-342" secondAttribute="leading" constant="-10" id="PPK-w8-fIL"/>
-                            <constraint firstItem="iul-Dk-KR6" firstAttribute="leading" secondItem="zmm-TM-uhb" secondAttribute="leading" constant="10" id="ajE-hh-fG2"/>
-                            <constraint firstAttribute="trailing" secondItem="d34-Tn-342" secondAttribute="trailing" constant="10" id="f51-1P-dbM"/>
-                            <constraint firstItem="d34-Tn-342" firstAttribute="top" secondItem="iul-Dk-KR6" secondAttribute="top" constant="-70" id="hWO-h4-lYU"/>
-                            <constraint firstItem="iul-Dk-KR6" firstAttribute="bottom" secondItem="d34-Tn-342" secondAttribute="bottom" id="mM0-KL-sbD"/>
+                            <constraint firstItem="d34-Tn-342" firstAttribute="top" secondItem="zmm-TM-uhb" secondAttribute="top" constant="10" id="FAe-y5-AlN"/>
+                            <constraint firstItem="d34-Tn-342" firstAttribute="leading" secondItem="zmm-TM-uhb" secondAttribute="leading" constant="10" id="Pnk-hl-EbR"/>
+                            <constraint firstAttribute="trailing" secondItem="d34-Tn-342" secondAttribute="trailing" constant="10" id="qGU-6k-dGe"/>
+                            <constraint firstAttribute="bottom" secondItem="d34-Tn-342" secondAttribute="bottom" constant="10" id="uPL-A6-b20"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iul-Dk-KR6">
+                        <rect key="frame" x="4" y="83" width="98" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="4Y9-wB-AQk"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="zmm-TM-uhb" secondAttribute="trailing" id="2Bq-2g-biL"/>
-                    <constraint firstAttribute="bottom" secondItem="zmm-TM-uhb" secondAttribute="bottom" id="U49-rU-SEE"/>
-                    <constraint firstItem="zmm-TM-uhb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="qJ3-7f-wGH"/>
-                    <constraint firstItem="zmm-TM-uhb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="xDc-lJ-I8j"/>
+                    <constraint firstItem="iul-Dk-KR6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="9OK-wV-gFc"/>
+                    <constraint firstItem="zmm-TM-uhb" firstAttribute="leading" secondItem="iul-Dk-KR6" secondAttribute="trailing" constant="8" id="IU0-d4-mdZ"/>
+                    <constraint firstItem="zmm-TM-uhb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="110" id="Lsm-ez-jO2"/>
+                    <constraint firstItem="iul-Dk-KR6" firstAttribute="bottom" secondItem="zmm-TM-uhb" secondAttribute="bottom" id="M10-jH-mWa"/>
+                    <constraint firstAttribute="bottom" secondItem="zmm-TM-uhb" secondAttribute="bottom" constant="2" id="YLL-5F-eQd"/>
+                    <constraint firstItem="zmm-TM-uhb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="Zop-lr-2pm"/>
+                    <constraint firstAttribute="trailing" secondItem="zmm-TM-uhb" secondAttribute="trailing" constant="10" id="w9V-cz-e4n"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
