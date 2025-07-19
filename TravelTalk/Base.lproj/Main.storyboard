@@ -88,6 +88,37 @@
             </objects>
             <point key="canvasLocation" x="983" y="2"/>
         </scene>
+        <!--Chat Table View Controller-->
+        <scene sceneID="hW6-Hd-kk1">
+            <objects>
+                <viewController storyboardIdentifier="ChatTableViewController" id="g05-vj-hq3" customClass="ChatTableViewController" customModule="TravelTalk" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FhP-b6-mXh">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="CeM-8f-wcq">
+                                <rect key="frame" x="0.0" y="118" width="393" height="666"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Yrr-Nw-bej"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="CeM-8f-wcq" firstAttribute="top" secondItem="Yrr-Nw-bej" secondAttribute="top" id="05H-pi-ced"/>
+                            <constraint firstItem="Yrr-Nw-bej" firstAttribute="trailing" secondItem="CeM-8f-wcq" secondAttribute="trailing" id="K4U-ZI-YWw"/>
+                            <constraint firstItem="Yrr-Nw-bej" firstAttribute="bottom" secondItem="CeM-8f-wcq" secondAttribute="bottom" id="ZYI-OE-IZ3"/>
+                            <constraint firstItem="CeM-8f-wcq" firstAttribute="leading" secondItem="Yrr-Nw-bej" secondAttribute="leading" id="zKJ-TD-bkO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="dZX-Dc-KqJ"/>
+                    <connections>
+                        <outlet property="tableView" destination="CeM-8f-wcq" id="Tym-od-Mtl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rS0-6K-3rG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1849" y="0.0"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">

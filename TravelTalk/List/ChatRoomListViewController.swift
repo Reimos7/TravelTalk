@@ -9,7 +9,8 @@ import UIKit
 
 final class ChatRoomListViewController: UIViewController {
     
-    let chatList = ChatList.list
+    let chat = ChatList.list
+    //let chat1 = ChatList()
     
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var collectionView: UICollectionView!
@@ -65,14 +66,14 @@ final class ChatRoomListViewController: UIViewController {
 // MARK: - UICollectionViewDataSource
 extension ChatRoomListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return chatList.count
+        return chat.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChatRoomListCollectionViewCell.identifier, for: indexPath) as! ChatRoomListCollectionViewCell
         
-        let item = chatList[indexPath.row]
+        let item = chat[indexPath.row]
         DispatchQueue.main.async {
             cell.chattingRoomImage.layer.cornerRadius = cell.chattingRoomImage.frame.width / 2
         }
@@ -89,5 +90,38 @@ extension ChatRoomListViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 extension ChatRoomListViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //print(#function)
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(identifier: "ChatTableViewController") as! ChatTableViewController
+        
+        let item = chat[indexPath.item]
+        
+        
+        //print(item.chatroomName)
+        
+        //print(item.chatList[indexPath.item].message)
+        
+        // 네비게이션 타이틀 설정
+        vc.navigationTitle = item.chatroomName
+        
+        // 사용자 이름 설정
+        vc.personName = item.chatroomImage
+        
+        // 사용자 이미지 설정
+        vc.personImage = UIImage(named: item.chatroomImage)
+        
+        //vc.personMessage = item.chatList[indexPath.item].message
+        
+        // chatList를 다음 화면인 테이블뷰에 보내주기
+        // chatList에는 채팅에 필요한 (유저이름, 메시지, 전송 시간)
+        vc.chatList = item.chatList
+        
+        //vc.personName = ChatList.den.name
+        //vc.personMessage = item.chatList[indexPath.item].message
+        
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
 }
