@@ -8,9 +8,8 @@
 import UIKit
 
 final class ChatRoomListViewController: UIViewController {
-    
-    let chat = ChatList.list
-    //let chat1 = ChatList()
+    // 검색을 필터링을 통해 유동적으로 변경되어야 함
+    var chat = ChatList.list
     
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var collectionView: UICollectionView!
@@ -22,6 +21,9 @@ final class ChatRoomListViewController: UIViewController {
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        searchBar.delegate = self
+        
+        searchBar.placeholder = "친구 이름을 검색해보세요"
         
         setupXib(xifNibName: ChatRoomListCollectionViewCell.nibName, reuseIdentifier: ChatRoomListCollectionViewCell.identifier)
         configureCollectionView(sectionInsets: 10, minimumSpacing: 1, cellCount: 1, itemSpacing: 0, lineSpacing: 10, scrollDirection: .vertical)
@@ -57,6 +59,17 @@ final class ChatRoomListViewController: UIViewController {
         layout.scrollDirection = scrollDirection
         
         collectionView.collectionViewLayout = layout
+    }
+    
+    // alert
+    func showAlert(title: String?, message: String?, preferredStyle: UIAlertController.Style) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
+        
+        let cancel = UIAlertAction(title: "닫기", style: .cancel)
+        
+        alert.addAction(cancel)
+
+        present(alert, animated: true)
     }
     
     
@@ -124,4 +137,54 @@ extension ChatRoomListViewController: UICollectionViewDelegate {
         navigationController?.pushViewController(vc, animated: true)
         
     }
+}
+
+
+// MARK: - UISearchBarDelegate
+extension ChatRoomListViewController: UISearchBarDelegate {
+   
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print(#function)
+        // 고정적인 원본 데이터
+        //let chatOriginData = ChatList.list
+        
+        // 검색 조건 필터링 데이터
+        var chatFilterData: [ChatRoom] = []
+        // 공백 제거
+        guard let searchText = searchBar.text?.trimmingCharacters(in: .whitespaces),
+              !searchText.isEmpty else {
+//            chat = chatOriginData
+//            collectionView.reloadData()
+            showAlert(title: "검색어 없음", message: "친구 이름을 검색해주세요", preferredStyle: .alert)
+            return
+        }
+        
+        // 대소문자 구별 x
+        chatFilterData = chat.filter {$0.chatroomName.lowercased().contains(searchText.lowercased())}
+        
+        // 검색한 결과가 친구 목록에 없다면?
+        if chatFilterData.isEmpty {
+            showAlert(title: "검색 결과 없음", message: "\(searchText)에 해당하는 채팅방이 없어요", preferredStyle: .alert)
+        }
+        
+        chat = chatFilterData
+
+        collectionView.reloadData()
+    
+        
+    }
+    
+    // 사용자가 검색어를 지웠을때 값이 비어 있다면, 다시 전체 목록 출력
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // 고정적인 원본 데이터
+        let chatOriginData = ChatList.list
+        
+        if searchText.isEmpty {
+            chat = chatOriginData
+            collectionView.reloadData()
+        }
+    }
+    
+    
+    
 }
