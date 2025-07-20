@@ -78,7 +78,9 @@
                             <constraint firstItem="Xzy-yq-Ekc" firstAttribute="leading" secondItem="sfz-nX-QFZ" secondAttribute="leading" constant="10" id="zoh-02-Yui"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="buX-Xf-049"/>
+                    <navigationItem key="navigationItem" id="buX-Xf-049">
+                        <barButtonItem key="backBarButtonItem" title=" " id="7tN-rf-gGW"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Xzy-yq-Ekc" id="CcB-yO-RzK"/>
                         <outlet property="searchBar" destination="s1c-DW-dL1" id="Muy-DI-wq3"/>
@@ -101,7 +103,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZTY-UV-lvD">
-                                <rect key="frame" x="10" y="708" width="373" height="50"/>
+                                <rect key="frame" x="10" y="708" width="323" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="7zu-e0-MeY"/>
@@ -112,12 +114,12 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTO-5i-fAB">
-                                <rect key="frame" x="298" y="716" width="75" height="34"/>
+                                <rect key="frame" x="337" y="708" width="52" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="96e-bl-c87"/>
+                                    <constraint firstAttribute="height" constant="50" id="96e-bl-c87"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Yrr-Nw-bej"/>
@@ -126,11 +128,13 @@
                             <constraint firstItem="CeM-8f-wcq" firstAttribute="top" secondItem="Yrr-Nw-bej" secondAttribute="top" id="05H-pi-ced"/>
                             <constraint firstItem="Yrr-Nw-bej" firstAttribute="trailing" secondItem="CeM-8f-wcq" secondAttribute="trailing" id="K4U-ZI-YWw"/>
                             <constraint firstItem="ZTY-UV-lvD" firstAttribute="top" secondItem="CeM-8f-wcq" secondAttribute="bottom" constant="4" id="OY2-PZ-HA8"/>
+                            <constraint firstItem="oTO-5i-fAB" firstAttribute="leading" secondItem="ZTY-UV-lvD" secondAttribute="trailing" constant="4" id="SI5-1X-uPu"/>
                             <constraint firstItem="oTO-5i-fAB" firstAttribute="centerY" secondItem="ZTY-UV-lvD" secondAttribute="centerY" id="Vb9-mQ-gLW"/>
+                            <constraint firstItem="Yrr-Nw-bej" firstAttribute="trailing" secondItem="oTO-5i-fAB" secondAttribute="trailing" constant="4" id="Xlw-MD-XWZ"/>
                             <constraint firstItem="ZTY-UV-lvD" firstAttribute="leading" secondItem="Yrr-Nw-bej" secondAttribute="leading" constant="10" id="YNs-Xf-rHd"/>
-                            <constraint firstItem="oTO-5i-fAB" firstAttribute="trailing" secondItem="ZTY-UV-lvD" secondAttribute="trailing" constant="-10" id="YQb-0n-Pch"/>
+                            <constraint firstItem="oTO-5i-fAB" firstAttribute="top" secondItem="CeM-8f-wcq" secondAttribute="bottom" constant="4" id="ZLF-38-gDv"/>
                             <constraint firstItem="Yrr-Nw-bej" firstAttribute="bottom" secondItem="CeM-8f-wcq" secondAttribute="bottom" constant="80" id="ZYI-OE-IZ3"/>
-                            <constraint firstItem="Yrr-Nw-bej" firstAttribute="trailing" secondItem="ZTY-UV-lvD" secondAttribute="trailing" constant="10" id="fJC-Pm-yye"/>
+                            <constraint firstItem="Yrr-Nw-bej" firstAttribute="trailing" secondItem="ZTY-UV-lvD" secondAttribute="trailing" constant="60" id="fJC-Pm-yye"/>
                             <constraint firstItem="CeM-8f-wcq" firstAttribute="leading" secondItem="Yrr-Nw-bej" secondAttribute="leading" id="zKJ-TD-bkO"/>
                         </constraints>
                     </view>
@@ -143,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rS0-6K-3rG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1849" y="0.0"/>
+            <point key="canvasLocation" x="1848.0916030534349" y="0.0"/>
         </scene>
     </scenes>
     <resources>

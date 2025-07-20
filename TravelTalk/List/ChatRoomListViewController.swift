@@ -16,11 +16,15 @@ final class ChatRoomListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //dump(chatList.count)
-        navigationItem.title = "TRAVEL TALK"
         
+        navigationItem.title = "TRAVEL TALK"
+        navigationItem.backBarButtonItem?.tintColor = .black
+       
         collectionView.dataSource = self
         collectionView.delegate = self
+        // 컬렉션뷰 스크롤 인디케이터 가려주기
+        collectionView.showsVerticalScrollIndicator = false
+        
         searchBar.delegate = self
         
         searchBar.placeholder = "친구 이름을 검색해보세요"

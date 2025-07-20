@@ -33,7 +33,7 @@ final class MyMessageTableViewCell: UITableViewCell {
         myMessageLabel.numberOfLines = 0 
         
         myMessageDateLabel.textAlignment = .right
-        myMessageDateLabel.textColor = .lightGray
+        myMessageDateLabel.textColor = .darkGray
         myMessageDateLabel.font = .systemFont(ofSize: 14)
     }
     

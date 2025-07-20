@@ -28,41 +28,8 @@ final class ChatTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //        dump(chat[1])
-        //        print("-----------------------------")
-        //        dump(chat[1].chatList)
-        //        print("-----------------------------")
-        //        dump(chat[1].chatList[0].message)
-        //        print("-----------------------------")
-        //        dump(chat[1].chatList[1].message)
-        //        print("-----------------------------")
-        //        dump(chat[1].chatList[2].message)
-        //        print("-----------------------------")
-        //        dump(chat[1].chatList[3].message)
-        //        print("-----------------------------")
-        //        dump(chat[1].chatList[4].message)
-        //        // 조건문으로 dump에 보이는걸 0번째 셀에 보이게, 1번째 셀에 보이게 이런식으로 ㄱㄱ
-        //        print("===========================다른 사람 =================================")
-        //        dump(chat[2])
-        //        print("-----------------------------")
-        //        dump(chat[2].chatList)
-        //        print("-----------------------------")
-        //        dump(chat[2].chatList[0].message)
-        //        print("-----------------------------")
-        //        dump(chat[2].chatList[1].message)
-        //        print("-----------------------------")
-        //        dump(chat[2].chatList[2].message)
-        //        print("-----------------------------")
-        //        dump(chat[2].chatList[3].message)
-        //        print("-----------------------------")
-        //        dump(chat[2].chatList[4].message)
-        //        print("============================================================")
-        //
-        
-        
+
         navigationItem.title = navigationTitle
-        
         
         // 내가 보낸 메시지
         configureXib(xibNibName: MyMessageTableViewCell.nibName, reuseIdentifier: MyMessageTableViewCell.identifier)
@@ -72,6 +39,8 @@ final class ChatTableViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
+        // 테이블뷰 스크롤 인디케이터 가리기
+        tableView.showsVerticalScrollIndicator = false
         
         messageTextView.delegate = self
         messageTextView.textAlignment = .left
