@@ -96,6 +96,8 @@ final class ChatTableViewController: UIViewController {
         
     }
     
+    
+    // MARK: - 전송 버튼 클릭
     @objc
     func tappedSendButton(_ sender: UIButton) {
         print(#function)
@@ -111,6 +113,10 @@ final class ChatTableViewController: UIViewController {
             
             tableView.reloadData()
         }
+        
+        // 테이블뷰를 마지막 셀로 자동 스크롤
+        let endIndex = IndexPath(row: (chatList?.count ?? 0) - 1, section: 0)
+        self.tableView.scrollToRow(at: endIndex, at: .bottom, animated: true)
         
 //        if !messageTextView.text.isEmpty {
 //            chatList?.append(Chat(user: .init(name: "김새싹", image: "Me"), date: Date().chatDateFormatter(), message: messageTextView.text))
