@@ -97,21 +97,47 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="CeM-8f-wcq">
-                                <rect key="frame" x="0.0" y="118" width="393" height="666"/>
+                                <rect key="frame" x="0.0" y="118" width="393" height="586"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZTY-UV-lvD">
+                                <rect key="frame" x="10" y="708" width="373" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="7zu-e0-MeY"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTO-5i-fAB">
+                                <rect key="frame" x="298" y="716" width="75" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="96e-bl-c87"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Yrr-Nw-bej"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="CeM-8f-wcq" firstAttribute="top" secondItem="Yrr-Nw-bej" secondAttribute="top" id="05H-pi-ced"/>
                             <constraint firstItem="Yrr-Nw-bej" firstAttribute="trailing" secondItem="CeM-8f-wcq" secondAttribute="trailing" id="K4U-ZI-YWw"/>
-                            <constraint firstItem="Yrr-Nw-bej" firstAttribute="bottom" secondItem="CeM-8f-wcq" secondAttribute="bottom" id="ZYI-OE-IZ3"/>
+                            <constraint firstItem="ZTY-UV-lvD" firstAttribute="top" secondItem="CeM-8f-wcq" secondAttribute="bottom" constant="4" id="OY2-PZ-HA8"/>
+                            <constraint firstItem="oTO-5i-fAB" firstAttribute="centerY" secondItem="ZTY-UV-lvD" secondAttribute="centerY" id="Vb9-mQ-gLW"/>
+                            <constraint firstItem="ZTY-UV-lvD" firstAttribute="leading" secondItem="Yrr-Nw-bej" secondAttribute="leading" constant="10" id="YNs-Xf-rHd"/>
+                            <constraint firstItem="oTO-5i-fAB" firstAttribute="trailing" secondItem="ZTY-UV-lvD" secondAttribute="trailing" constant="-10" id="YQb-0n-Pch"/>
+                            <constraint firstItem="Yrr-Nw-bej" firstAttribute="bottom" secondItem="CeM-8f-wcq" secondAttribute="bottom" constant="80" id="ZYI-OE-IZ3"/>
+                            <constraint firstItem="Yrr-Nw-bej" firstAttribute="trailing" secondItem="ZTY-UV-lvD" secondAttribute="trailing" constant="10" id="fJC-Pm-yye"/>
                             <constraint firstItem="CeM-8f-wcq" firstAttribute="leading" secondItem="Yrr-Nw-bej" secondAttribute="leading" id="zKJ-TD-bkO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dZX-Dc-KqJ"/>
                     <connections>
+                        <outlet property="messageTextView" destination="ZTY-UV-lvD" id="3KO-VK-jBs"/>
+                        <outlet property="sendButton" destination="oTO-5i-fAB" id="hth-Yl-vVr"/>
                         <outlet property="tableView" destination="CeM-8f-wcq" id="Tym-od-Mtl"/>
                     </connections>
                 </viewController>
@@ -121,6 +147,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

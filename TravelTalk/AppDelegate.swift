@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // 모든 화면에 키보드에 대한 기능을 켜준다는 의미
+        IQKeyboardManager.shared.isEnabled = true
+        IQKeyboardManager.shared.layoutIfNeededOnUpdate = true
+        // 바깥 부분 터치시 키보드 내리기
+        IQKeyboardManager.shared.resignOnTouchOutside = true
         return true
     }
 
