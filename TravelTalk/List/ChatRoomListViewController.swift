@@ -64,19 +64,6 @@ final class ChatRoomListViewController: UIViewController {
         
         collectionView.collectionViewLayout = layout
     }
-    
-    // alert
-    func showAlert(title: String?, message: String?, preferredStyle: UIAlertController.Style) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
-        
-        let cancel = UIAlertAction(title: "닫기", style: .cancel)
-        
-        alert.addAction(cancel)
-
-        present(alert, animated: true)
-    }
-    
-    
 }
 
 
