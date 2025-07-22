@@ -10,13 +10,15 @@ import UIKit
 final class ChatTableViewController: UIViewController {
     
     //let chat = ChatList.list
-    
     var navigationTitle: String?
     var personName: String?
     // 컬렉션뷰 화면에서 Chat을 전달 받기 위한 변수
     var chatList: [Chat]?
     var personImage: UIImage?
     var chatDate: Date?
+    var chatroomId: Int = 0
+    
+    var testMessage = ""
     
     let textViewPlaceHolder = "내용을 입력하세요"
     
@@ -37,6 +39,8 @@ final class ChatTableViewController: UIViewController {
         // 상대방이 보낸 메시지
         configureXib(xibNibName: OtherMessageTableViewCell.nibName, reuseIdentifier: OtherMessageTableViewCell.identifier)
         
+        tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "header")
+
         tableView.dataSource = self
         tableView.delegate = self
         // 테이블뷰 스크롤 인디케이터 가리기
@@ -75,8 +79,20 @@ final class ChatTableViewController: UIViewController {
         if messageTextView.text.isEmpty || messageTextView.text == textViewPlaceHolder {
             showAlert(title: "전송할 메시지가 없어요", message: "전송할 메시지를 입력해주세요", preferredStyle: .alert)
         } else if !messageTextView.text.isEmpty {
-            chatList?.append(Chat(user: .init(name: "김새싹", image: "Me"), date: Date().chatDateFormatter(), message: messageTextView.text))
+            // 김새싹 (나) 텍스트뷰 입력 -> 원본 구조체에 입력 내용 append (방 번호를 통해서)
+            let myAppendChat = Chat(user: .init(name: "김새싹", image: "Me"), date: Date().chatDateFormatter(), message: messageTextView.text)
             
+            chatList?.append(myAppendChat)
+            //chatList?.append(Chat(user: .init(name: "김새싹", image: "Me"), date: Date().chatDateFormatter(), message: messageTextView.text))
+            //ChatList.list?[chatroomId - 1].chatList.append(myAppendChat)
+            print(myAppendChat)
+            
+            // 방 번호를 통해서 입력한 textView 내용 저장, -1 은 방번호가 1번방부터 시작이니까 0번 인덱스
+            ChatList.list[(chatroomId) - 1].chatList.append(myAppendChat)
+            
+            print(ChatList.list[(chatroomId) - 1].chatList)
+            print(chatroomId - 1)
+            // print(ChatList.list[(chatroomId) - 1].chatList.append(myAppendChat))
             // 텍스트뷰 입력란 비워주기
             messageTextView.text = ""
             
@@ -160,7 +176,30 @@ extension ChatTableViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension ChatTableViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header")!
+
+        let label = UILabel()
+        label.text = "날짜"
+        
+        label.textColor = .black
+        label.textAlignment = .center
+        label.font = .boldSystemFont(ofSize: 16)
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        headerView.contentView.addSubview(label)
+
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: headerView.contentView.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: headerView.contentView.centerYAnchor)
+        ])
+        
+        return headerView
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40 // 원하는 높이로 설정
+    }
 }
 
 

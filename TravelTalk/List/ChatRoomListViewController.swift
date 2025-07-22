@@ -14,6 +14,13 @@ final class ChatRoomListViewController: UIViewController {
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var collectionView: UICollectionView!
     
+    // viewWillAppear를 통해 텍스트뷰에서 입력한 최신 내용 업데이트
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        chat = ChatList.list
+        collectionView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -115,7 +122,10 @@ extension ChatRoomListViewController: UICollectionViewDelegate {
         
         // 사용자 이미지 설정
         vc.personImage = UIImage(named: item.chatroomImage)
-        
+        // 방번호 전달 -> 원본 데이터 접근 하기 위함 
+        vc.chatroomId = item.chatroomId
+        print("------------------")
+        print(item.chatroomId)
         //vc.personMessage = item.chatList[indexPath.item].message
         
         // chatList를 다음 화면인 테이블뷰에 보내주기
