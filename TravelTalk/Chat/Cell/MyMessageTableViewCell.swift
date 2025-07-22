@@ -8,9 +8,6 @@
 import UIKit
 
 final class MyMessageTableViewCell: UITableViewCell {
-    
-    static let nibName = "MyMessageTableViewCell"
-    static let identifier = "MyMessageTableViewCell"
 
     @IBOutlet var myMessageBackgroundView: UIView!
     
@@ -21,7 +18,7 @@ final class MyMessageTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        myMessageBackgroundView.backgroundColor = UIColor(red: 239/255.0, green: 239/255.0, blue: 239/255.0, alpha: 1.0)
+        myMessageBackgroundView.backgroundColor = .myMessageBgColor
         
         myMessageBackgroundView.layer.masksToBounds = true
         myMessageBackgroundView.layer.cornerRadius = 10

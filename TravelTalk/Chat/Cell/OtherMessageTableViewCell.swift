@@ -9,9 +9,6 @@ import UIKit
 
 final class OtherMessageTableViewCell: UITableViewCell {
     
-    static let nibName = "OtherMessageTableViewCell"
-    static let identifier = "OtherMessageTableViewCell"
-    
     @IBOutlet var otherMessagePersonImage: UIImageView!
     
     @IBOutlet var otherMessagePersonName: UILabel!

@@ -24,22 +24,32 @@ final class ChatRoomListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setNavigationItem()
+        setCollectionView()
+        setSearchBar()
+        
+        setupXib(xifNibName: CellResource.chatRoomList.nibName, reuseIdentifier: CellResource.chatRoomList.identifier)
+        configureCollectionView(sectionInsets: 10, minimumSpacing: 1, cellCount: 1, itemSpacing: 0, lineSpacing: 10, scrollDirection: .vertical)
+        
+        
+    }
+    
+    private func setNavigationItem() {
         navigationItem.title = "TRAVEL TALK"
         navigationItem.backBarButtonItem?.tintColor = .black
-       
+    }
+    
+    private func setCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
         // 컬렉션뷰 스크롤 인디케이터 가려주기
         collectionView.showsVerticalScrollIndicator = false
         
+    }
+    
+    private func setSearchBar() {
         searchBar.delegate = self
-        
         searchBar.placeholder = "친구 이름을 검색해보세요"
-        
-        setupXib(xifNibName: ChatRoomListCollectionViewCell.nibName, reuseIdentifier: ChatRoomListCollectionViewCell.identifier)
-        configureCollectionView(sectionInsets: 10, minimumSpacing: 1, cellCount: 1, itemSpacing: 0, lineSpacing: 10, scrollDirection: .vertical)
-        
-        
     }
     
     // xib 세팅 함수
@@ -82,7 +92,7 @@ extension ChatRoomListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ChatRoomListCollectionViewCell.identifier, for: indexPath) as! ChatRoomListCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellResource.chatRoomList.identifier, for: indexPath) as! ChatRoomListCollectionViewCell
         
         let item = chat[indexPath.row]
         DispatchQueue.main.async {

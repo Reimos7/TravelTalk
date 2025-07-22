@@ -8,10 +8,6 @@
 import UIKit
 
 final class ChatRoomListCollectionViewCell: UICollectionViewCell {
-    
-    static let nibName = "ChatRoomListCollectionViewCell"
-    static let identifier = "ChatRoomListCollectionViewCell"
-    
     @IBOutlet var chattingRoomImage: UIImageView!
     
     @IBOutlet var chattingRoomName: UILabel!

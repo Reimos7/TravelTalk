@@ -8,7 +8,7 @@
 import Foundation
 
 extension Date {
-    func chatDateFormatter() -> String {
+    var chatDateFormatter: String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "h시 mm분 a"
         dateFormatter.locale = Locale(identifier: "ko_KR")

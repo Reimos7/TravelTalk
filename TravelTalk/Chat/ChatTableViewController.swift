@@ -15,10 +15,7 @@ final class ChatTableViewController: UIViewController {
     // 컬렉션뷰 화면에서 Chat을 전달 받기 위한 변수
     var chatList: [Chat]?
     var personImage: UIImage?
-    var chatDate: Date?
     var chatroomId: Int = 0
-    
-    var testMessage = ""
     
     let textViewPlaceHolder = "내용을 입력하세요"
     
@@ -44,29 +41,36 @@ final class ChatTableViewController: UIViewController {
         navigationItem.title = navigationTitle
         
         // 내가 보낸 메시지
-        configureXib(xibNibName: MyMessageTableViewCell.nibName, reuseIdentifier: MyMessageTableViewCell.identifier)
+        configureXib(xibNibName: CellResource.myMessageCell.nibName, reuseIdentifier: CellResource.myMessageCell.identifier)
         
         // 상대방이 보낸 메시지
-        configureXib(xibNibName: OtherMessageTableViewCell.nibName, reuseIdentifier: OtherMessageTableViewCell.identifier)
+        configureXib(xibNibName: CellResource.otherMessageCell.nibName, reuseIdentifier: CellResource.otherMessageCell.identifier)
         
-        tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "header")
-
+        setupTableView()
+        setupTextView()
+        
+        setupTextField()
+        setupButton()
+    }
+    
+    private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         // 테이블뷰 스크롤 인디케이터 가리기
         tableView.showsVerticalScrollIndicator = false
         
-        messageTextView.delegate = self
-        messageTextView.textAlignment = .left
-        messageTextView.font = .systemFont(ofSize: 15)
+        tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "header")
         
         // automaticDimension
         tableView.rowHeight = UITableView.automaticDimension
         // 테이블 뷰 셀 줄 없애기
         tableView.separatorStyle = .none
-        
-        setupTextField()
-        setupButton()
+    }
+    
+    private func setupTextView() {
+        messageTextView.delegate = self
+        messageTextView.textAlignment = .left
+        messageTextView.font = .systemFont(ofSize: 15)
     }
     
     private func setupButton() {
@@ -90,7 +94,7 @@ final class ChatTableViewController: UIViewController {
             showAlert(title: "전송할 메시지가 없어요", message: "전송할 메시지를 입력해주세요", preferredStyle: .alert)
         } else if !messageTextView.text.isEmpty {
             // 김새싹 (나) 텍스트뷰 입력 -> 원본 구조체에 입력 내용 append (방 번호를 통해서)
-            let myAppendChat = Chat(user: .init(name: "김새싹", image: "Me"), date: Date().chatDateFormatter(), message: messageTextView.text)
+            let myAppendChat = Chat(user: .init(name: "김새싹", image: "Me"), date: Date().chatDateFormatter, message: messageTextView.text)
             
             chatList?.append(myAppendChat)
             //chatList?.append(Chat(user: .init(name: "김새싹", image: "Me"), date: Date().chatDateFormatter(), message: messageTextView.text))
@@ -154,7 +158,7 @@ extension ChatTableViewController: UITableViewDataSource {
         
         // 김새싹 (나) 이 보낸 채팅이라면? MyMessageTableViewCell
         if chatList?[indexPath.row].user.name == "김새싹" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: MyMessageTableViewCell.identifier, for: indexPath) as! MyMessageTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CellResource.myMessageCell.identifier, for: indexPath) as! MyMessageTableViewCell
             
             cell.configure(message: chatList?[indexPath.row].message, date: chatList?[indexPath.row].date.chatDate)
             
@@ -164,7 +168,7 @@ extension ChatTableViewController: UITableViewDataSource {
             
         } else {
             // 상대방이라면 OtherMessageTableViewCell
-            let cell = tableView.dequeueReusableCell(withIdentifier: OtherMessageTableViewCell.identifier, for: indexPath) as! OtherMessageTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CellResource.otherMessageCell.identifier, for: indexPath) as! OtherMessageTableViewCell
             
             //let chat = chatList[indexPath.row]
             // 이미지를 정원으로 그리기
