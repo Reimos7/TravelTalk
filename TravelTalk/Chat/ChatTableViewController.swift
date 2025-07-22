@@ -28,6 +28,16 @@ final class ChatTableViewController: UIViewController {
     
     @IBOutlet var sendButton: UIButton!
     
+    // 자동으로 가장 마지막 채팅 이동
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        DispatchQueue.main.async {
+            // 테이블뷰를 마지막 셀로 자동 스크롤
+            let endIndex = IndexPath(row: (self.chatList?.count ?? 0) - 1, section: 0)
+            self.tableView.scrollToRow(at: endIndex, at: .bottom, animated: true)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
